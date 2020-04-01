@@ -56,7 +56,7 @@ plot(d, col=cl)
 
 #esercizio: plot della mappa della densità dal verde al blu
 cl1 <- colorRampPalette(c('green','blue')) (100)
-plot(d, col=cl1)
+plot(d, col=cl1) 
 
 points(covids)
 
