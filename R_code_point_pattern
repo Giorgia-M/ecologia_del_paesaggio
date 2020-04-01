@@ -6,7 +6,7 @@ install.packages("spatstat")
 library(ggplot2) #comando alternativo require(ggplot2)
 library(spatstat)
 
-setwd("c:/lab/")
+setwd("C:/lab/")
 
 # importare dati
 covid <- read.table("covid_agg.csv", head=T)
@@ -45,5 +45,28 @@ plot(d)
 points(covids)
 
 
+# save the .RData
+setwd("C:/lab/")
+load("point_pattern.RData")
+ls()
+plot(d)
+#palette di colori
+cl <- colorRampPalette(c('yellow','orange','red')) (100)
+plot(d, col=cl)
 
+#esercizio: plot della mappa della densità dal verde al blu
+cl1 <- colorRampPalette(c('green','blue')) (100)
+plot(d, col=cl1)
+
+points(covids)
+
+install.packages("rgdal")
+library(rgdal)
+coastlines <- readOGR("ne_10m_coastline.shp")
+plot(coastlines, add=T)
+
+# esercizio: plot della mappa di densità con una nuova colorazione e aggiunta dellle coastline
+cl <- colorRampPalette(c('blue','light blue','light green','yellow')) (100)
+plot(d, col=cl)
+plot(coastlines, add=T, col="yellow")
 
