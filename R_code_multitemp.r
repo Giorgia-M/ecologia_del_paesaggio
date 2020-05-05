@@ -86,6 +86,36 @@ library(ggplot2)
 
 
 
+### lezione 2
+library(raster)
+setwd("C:/lab/")
+load("defor.RData")
+ls()
+par(mfrow=c(1,2))
+cl <- colorRampPalette(c('black','green'))(100) 
+plot(d1c$map, col=cl)
+plot(d2c$map, col=cl)
+
+library(ggplot2)
+# histograms of the % cover before deforestation
+ggplot(output, aes(x=cover, y=before, color=cover)) +
+geom_bar(stat="identity", fill="white")
+
+# esercizio: plot the histograms of the land cover after deforestaton
+ggplot(output, aes(x=cover, y=after, color=cover)) +
+geom_bar(stat="identity", fill="white")
+
+install.packages("gridExtra")
+library(gridExtra)  # oppure require(Extra)
+
+grafico1 <- ggplot(output, aes(x=cover, y=before, color=cover)) +
+geom_bar(stat="identity", fill="white")
+grafico2 <- ggplot(output, aes(x=cover, y=after, color=cover)) +
+geom_bar(stat="identity", fill="white")
+
+# use grid.arrange to plot the two graphs
+grid.arrange(grafico1, grafico2, nrow = 1)
+
 
 
 
