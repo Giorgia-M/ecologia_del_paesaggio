@@ -50,4 +50,17 @@ plot(EN12, col=cl)
 plot(EN13, col=cl)
  
 
+## lezione 2
+setwd("C:/lab/")
+load("EN.RData")
+ls()
 
+setwd("C:/lab/esa_no2")
+rlist <- list.files(pattern=".png")
+rlist
+
+listafinale <- lapply(rlist, raster)
+EN <- stack(listafinale)
+
+cl <- colorRampPalette(c('red','orange','yellow'))(100) 
+plot(EN, col=cl)
